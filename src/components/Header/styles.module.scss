@@ -19,4 +19,28 @@
     margin-left: auto;
     text-transform: capitalize;
   }
+
+  @media (max-width: 720px) {
+    padding: 1rem 2rem;
+
+    span {
+      display: none;
+    }
+
+    p {
+      margin-right: auto;
+    }
+  }
+
+  @media (max-width: 700px) {
+    img {
+      margin-right: auto;
+    }
+  }
+
+  @media (max-width: 450px) {
+    p {
+      display: none;
+    }
+  }
 }

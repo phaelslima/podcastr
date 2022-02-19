@@ -44,14 +44,17 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
           {latestEpisodes.map((episode, index) => {
             return (
               <li key={episode.id}>
-                <Image
-                  width={192}
-                  height={192}
-                  src={episode.thumbnail}
-                  alt={episode.title}
-                  
-                  objectFit="cover"
-                />
+                <div className={styles.imageContainer}>
+                  <Image
+                    width={192}
+                    height={192}
+                    src={episode.thumbnail}
+                    alt={episode.title}
+                    
+                    objectFit="cover"
+                  />
+                </div>
+                
 
                 <div className={styles.episodeDetails}>
                   <Link href={`/episodes/${episode.id}`}>
@@ -90,13 +93,15 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
               return (
                 <tr key={episode.id}>
                   <td style={{ width: 72 }}>
-                    <Image
-                      width={120}
-                      height={120}
-                      src={episode.thumbnail}
-                      alt={episode.title}
-                      objectFit="cover"
-                    />
+                    <div className={styles.imageContainer}>
+                      <Image
+                        width={192}
+                        height={192}
+                        src={episode.thumbnail}
+                        alt={episode.title}
+                        objectFit="cover"
+                      />
+                    </div>
                   </td>
                   <td>
                     <Link href={`/episodes/${episode.id}`}>
@@ -116,6 +121,39 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
             })}
           </tbody>
         </table>
+
+        <ul>
+          {allEpisodes.map((episode, index) => {
+            return (
+              <li key={episode.id}>
+                <div className={styles.imageContainer}>
+                  <Image
+                    width={192}
+                    height={192}
+                    src={episode.thumbnail}
+                    alt={episode.title}
+                    
+                    objectFit="cover"
+                  />
+                </div>
+                
+
+                <div className={styles.episodeDetails}>
+                  <Link href={`/episodes/${episode.id}`}>
+                    <a>{episode.title}</a>
+                  </Link>
+                  <p>{episode.members}</p>
+                  <span>{episode.publishedAt}</span>
+                  <span>{episode.durationAsString}</span>
+                </div>
+
+                <button type="button" onClick={() => playList(episodeList,index)}>
+                  <img src="/play-green.svg" alt="Tocar episódio" />
+                </button>
+              </li>
+            )
+          })}
+        </ul>
       </section>
     </div>
   )
